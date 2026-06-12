@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support & About Us - Abalone Marbles</title>
+    <title>Support — Abalone Marbles</title>
     <style>
-        /* Color and Font Settings */
         :root {
-            --bg-color: #121212; 
+            --bg-color: #121212;
             --container-bg: #1e1e1e;
+            --card-bg: #252525;
             --text-main: #ffffff;
             --text-muted: #a0a0a0;
-            --gold-bright: #FFD700; 
+            --gold-bright: #FFD700;
+            --gold-soft: rgba(255, 215, 0, 0.12);
+            --blue-glow: #2BB3FF;
             --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: var(--font-family);
-            line-height: 1.8;
-            margin: 0;
+            line-height: 1.7;
             padding: 20px;
             display: flex;
             justify-content: center;
@@ -31,121 +34,323 @@
             max-width: 800px;
             width: 100%;
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
         }
 
-        h1 {
+        /* ── Hero ─────────────────────────── */
+        .hero {
+            text-align: center;
+            padding: 32px 0 40px;
+            border-bottom: 1px solid #2a2a2a;
+            margin-bottom: 40px;
+        }
+
+        .marble-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #6ee0ff, #2BB3FF 45%, #0a4a6e);
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(43,179,255,0.4), inset 0 0 12px rgba(255,255,255,0.2);
+            position: relative;
+        }
+
+        .marble-icon::after {
+            content: '';
+            position: absolute;
+            top: 14%;
+            left: 18%;
+            width: 38%;
+            height: 22%;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            transform: rotate(-15deg);
+        }
+
+        .hero h1 {
             font-size: 32px;
-            margin-bottom: 10px;
-            color: var(--gold-bright);
-            text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
         }
 
-        .meta {
+        .hero h1 span { color: var(--gold-bright); }
+
+        .hero .tagline {
+            font-size: 16px;
             color: var(--text-muted);
-            font-size: 15px;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #333;
-            text-align: center;
+            max-width: 480px;
+            margin: 0 auto;
         }
 
+        /* ── Nav links ─────────────────────── */
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .meta-links { display: flex; gap: 16px; }
+
+        a { color: var(--gold-bright); text-decoration: none; transition: opacity 0.2s; }
+        a:hover { opacity: 0.75; text-decoration: underline; }
+
+        /* ── Section headers ───────────────── */
         h2 {
             color: var(--gold-bright);
-            font-size: 22px;
-            margin-top: 35px;
-            margin-bottom: 15px;
+            font-size: 18px;
+            margin: 40px 0 16px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        p {
-            font-size: 16px;
-            margin-bottom: 15px;
-            color: #cccccc;
+        h2 .icon { font-size: 20px; }
+
+        p { font-size: 15px; margin-bottom: 14px; color: #cccccc; }
+
+        ul { margin: 0 0 16px; padding-left: 22px; color: #cccccc; }
+        li { font-size: 15px; margin-bottom: 8px; }
+
+        /* ── Cards grid ────────────────────── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 20px 0 32px;
         }
 
-        /* Contact Box Styling */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover { border-color: rgba(255, 215, 0, 0.35); }
+
+        .card .card-icon { font-size: 28px; margin-bottom: 10px; }
+        .card h3 { font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
+        .card p { font-size: 13px; color: var(--text-muted); margin: 0; }
+
+        /* ── Contact CTA ───────────────────── */
         .contact-box {
-            background-color: rgba(255, 215, 0, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 10px;
-            padding: 25px;
+            background: var(--gold-soft);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 14px;
+            padding: 28px;
             text-align: center;
-            margin-top: 40px;
-            transition: 0.3s;
+            margin: 36px 0;
         }
 
-        .contact-box:hover {
-            border-color: var(--gold-bright);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
-        }
+        .contact-box .contact-emoji { font-size: 36px; margin-bottom: 12px; }
+        .contact-box h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .contact-box p { color: var(--text-muted); margin-bottom: 20px; }
 
-        .contact-box p {
-            color: var(--text-main);
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        a.email-link {
-            color: var(--gold-bright);
-            font-size: 22px;
-            font-weight: bold;
-            text-decoration: none;
+        .email-btn {
             display: inline-block;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-
-        a.email-link:hover {
-            opacity: 0.8;
-            transform: scale(1.05);
+            background: var(--gold-bright);
+            color: #121212;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 12px 28px;
+            border-radius: 50px;
             text-decoration: none;
+            transition: opacity 0.2s, transform 0.15s;
         }
 
-        .emoji {
-            font-size: 24px;
-            margin-right: 8px;
+        .email-btn:hover { opacity: 0.88; transform: scale(1.03); text-decoration: none; }
+
+        /* ── Vision section ────────────────── */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 20px 0;
         }
 
-        /* Mobile Optimization */
+        .vision-card {
+            background: linear-gradient(135deg, #1e1e1e, #252525);
+            border: 1px solid #2e2e2e;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .vision-card .big { font-size: 30px; margin-bottom: 8px; }
+        .vision-card h4 { font-size: 13px; font-weight: 700; color: var(--gold-bright); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+        .vision-card p { font-size: 13px; color: var(--text-muted); margin: 0; }
+
+        /* ── Divider ───────────────────────── */
+        hr { border: none; border-top: 1px solid #2a2a2a; margin: 36px 0; }
+
+        /* ── Footer ────────────────────────── */
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #555;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .footer a { color: #666; }
+
         @media (max-width: 600px) {
-            .container {
-                padding: 25px 15px;
-            }
-            h1 {
-                font-size: 26px;
-            }
-            a.email-link {
-                font-size: 18px;
-            }
+            .container { padding: 20px; }
+            .hero h1 { font-size: 26px; }
+            .meta { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Abalone Marbles 🎲</h1>
-        <div class="meta">Support | About Us | Our Vision</div>
+<div class="container">
 
-        <h2><span class="emoji">🚀</span> What is Abalone Marbles?</h2>
-        <p>This isn't just another board game you play and forget. It's a pure strategic brain-teaser! We took the classic game you know and love, and transformed it into a fast-paced, sleek digital experience. Plan your moves, push your opponent's marbles off the board, and show them who's boss!</p>
+    <!-- Hero -->
+    <div class="hero">
+        <div class="marble-icon"></div>
+        <h1>Abalone <span>Marbles</span></h1>
+        <p class="tagline">The classic marble strategy board game — now in your pocket. Push, outthink, and dominate.</p>
+    </div>
 
-        <h2><span class="emoji">🌟</span> Our Vision</h2>
-        <p>We aim to blend the nostalgia of classic tactical games with modern tech and fresh design. We want Abalone Marbles to be your go-to game when you want a real challenge with friends, far away from luck-based mechanics.</p>
-
-        <h2><span class="emoji">🎯</span> Our Goal</h2>
-        <p>Simple and straightforward: to build a strong community of gamers who love to think and compete. We are dedicated to providing a smooth experience, eye-catching design, and constant updates to keep the gameplay fresh and exciting.</p>
-
-        <h2><span class="emoji">🛠️</span> Support (We've Got Your Back)</h2>
-        <p>Found an annoying glitch? Something not working right? Or maybe you have a cool feature idea for the next update? We're all ears and always here to help you out.</p>
-        
-        <div class="contact-box">
-            <p>Drop us a message and we'll get back to you ASAP ⚡</p>
-            <a href="mailto:A.RahmanNabil@outlook.com" class="email-link">A.RahmanNabil@outlook.com</a>
+    <!-- Nav -->
+    <div class="meta">
+        <span>Support Center</span>
+        <div class="meta-links">
+            <a href="index.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
         </div>
     </div>
+
+    <!-- About the Game -->
+    <h2><span class="icon">🎮</span> About the Game</h2>
+    <p>
+        <strong>Abalone Marbles</strong> is a faithful digital adaptation of the award-winning Abalone board game — redesigned for mobile with smooth animations, real-time online play, and a whole progression system to keep you coming back.
+    </p>
+    <p>
+        The rules are simple: push your opponent's 6 marbles off the hexagonal board before they push yours. The strategy, however, runs deep. Control the center, form tight lines, and use your marble majority to overpower — every move counts.
+    </p>
+
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">🌐</div>
+            <h3>Online Multiplayer</h3>
+            <p>Real-time PvP against players worldwide. No queue? The bot fills in instantly.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>vs. AI Bot</h3>
+            <p>Three difficulty levels — Easy, Medium, and Hard. Each win earns you coins.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🔑</div>
+            <h3>Private Rooms</h3>
+            <p>Create a room, share a 4-character code, and challenge any friend anywhere.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Dash Mode</h3>
+            <p>Lightning variant: first to push ONE marble off the board wins. Blink and you lose.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">💎</div>
+            <h3>Marble Skins</h3>
+            <p>10 skins across 4 rarity tiers — Classic, Common, Rare, and Legendary.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🎰</div>
+            <h3>Daily Rewards</h3>
+            <p>Spin the wheel every day, complete daily missions, and earn coins for free.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Vision -->
+    <h2><span class="icon">🚀</span> Our Vision</h2>
+    <p>
+        We believe great board games deserve great digital homes. Abalone Marbles isn't just a port — it's a reimagination built for a generation that grew up with smartphones.
+    </p>
+
+    <div class="vision-grid">
+        <div class="vision-card">
+            <div class="big">🎯</div>
+            <h4>Mission</h4>
+            <p>Make strategic board games accessible, beautiful, and fun for everyone — anywhere, anytime.</p>
+        </div>
+        <div class="vision-card">
+            <div class="big">🌍</div>
+            <h4>Vision</h4>
+            <p>Build a global community around classic strategy games, starting with Abalone.</p>
+        </div>
+        <div class="vision-card">
+            <div class="big">⚙️</div>
+            <h4>How We Build</h4>
+            <p>Small team, big care. Every update is tested, polished, and shipped with love.</p>
+        </div>
+        <div class="vision-card">
+            <div class="big">🆓</div>
+            <h4>Philosophy</h4>
+            <p>Free to play, fair to win. All content can be unlocked through gameplay — no paywalls.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- FAQ -->
+    <h2><span class="icon">❓</span> Frequently Asked Questions</h2>
+
+    <p><strong>Why can't I see my coins after winning?</strong><br>
+    Make sure your internet connection is stable. Coin rewards are applied server-side and may take a few seconds to appear. Restart the app if they don't show up within a minute.</p>
+
+    <p><strong>My opponent disappeared during an online match — what happens?</strong><br>
+    If your opponent disconnects, they have 30 seconds to reconnect. If they don't, the match is awarded to you.</p>
+
+    <p><strong>I lost progress after reinstalling the app.</strong><br>
+    Guest accounts store progress locally. Create a free account (Google, Apple, or email) to back up your coins, stats, and skins to the cloud permanently.</p>
+
+    <p><strong>The Daily Spin says I already spun — but I didn't.</strong><br>
+    The spin resets at midnight (device local time). If your device clock changed or you crossed a timezone, this can trigger early. Contact us if it's a recurring issue.</p>
+
+    <p><strong>Can I play offline?</strong><br>
+    vs. Bot mode works offline. Online Multiplayer and Private Rooms require an active internet connection.</p>
+
+    <p><strong>How do I delete my account and data?</strong><br>
+    Go to <strong>Profile → Settings → Delete Account</strong>. All your data will be permanently removed within 30 days. You can also email us directly.</p>
+
+    <hr>
+
+    <!-- Contact -->
+    <div class="contact-box">
+        <div class="contact-emoji">✉️</div>
+        <h3>Get in Touch</h3>
+        <p>Bug report, feature request, or just want to say hi? We read every message and usually reply within 24–48 hours.</p>
+        <a href="mailto:A.RahmanNabil@outlook.com" class="email-btn">A.RahmanNabil@outlook.com</a>
+    </div>
+
+    <p style="text-align:center; font-size:14px; color: var(--text-muted);">
+        When reporting a bug, please include your device model, OS version, and a short description of what happened. Screenshots help a lot!
+    </p>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2025 Abdelrahman Nabil Mohamed · Abalone Marbles</p>
+        <p style="margin-top:6px;">
+            <a href="index.html">Privacy Policy</a> &nbsp;·&nbsp;
+            <a href="terms.html">Terms of Service</a>
+        </p>
+    </div>
+
+</div>
 
 </body>
 </html>
